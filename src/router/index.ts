@@ -1,4 +1,5 @@
 import { createMemoryHistory, createRouter, RouteRecordRaw } from 'vue-router'
+import { useUserAuthStore } from '@/stores/auth'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -24,16 +25,12 @@ const routes: RouteRecordRaw[] = [
           icon: 'Menu'
         }
       },
-      
     ],
   },
   {
     path: '/auth',
-    name: '登录/注册',
-    component: () => import('@/layouts/Auth/index.vue'),
-    children: [
-
-    ],
+    name: '鉴权',
+    component: () => import('@/views/Auth/index.vue'),
   },
   {
     path: '/',
@@ -44,6 +41,19 @@ const routes: RouteRecordRaw[] = [
 const router = createRouter({
   history: createMemoryHistory(),
   routes,
+})
+
+
+router.beforeEach((to, from, next) => {
+  const user = useUserAuthStore()
+  if (user.isLoggedIn && to.path === '/auth') {
+    return next('/panel/dashboard')
+  }
+
+  if (!user.isLoggedIn && to.path !== '/auth') {
+    return next('/auth')
+  }
+  next()
 })
 
 export default router

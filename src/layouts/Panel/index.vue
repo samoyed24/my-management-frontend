@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import SideBar from '@/layouts/SideBar/index.vue'
-import RouterViewContainer from '@/layouts/RouteViewContainer/index.vue'
-import HeaderBar from '@/layouts/HeaderBar/index.vue'
+import SideBar from '@/layouts/Panel/SideBar/index.vue'
+import RouterViewContainer from '@/layouts/Panel/RouteViewContainer/index.vue'
+import HeaderBar from '@/layouts/Panel/HeaderBar/index.vue'
 import router from '@/router'
 
 const sideBarRoutes = router.options.routes.filter(route => route.path === '/panel')[0]
@@ -26,7 +26,7 @@ const sideBarRoutes = router.options.routes.filter(route => route.path === '/pan
 
 <style scoped>
 .header {
-  margin: 10px;
+  margin: 10px 0;
 }
 
 .el-menu--horizontal  {
