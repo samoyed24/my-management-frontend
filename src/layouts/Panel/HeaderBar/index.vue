@@ -1,6 +1,27 @@
 <script setup lang="ts">
 import logo from '@/assets/logo.png'
 import avatar from '@/assets/avatar.png'
+import { postLogout } from '@/api/auth'
+import { ElMessage } from 'element-plus'
+import { useUserAuthStore } from '@/stores/auth'
+import { useRouter } from 'vue-router'
+
+const logoutRedirectTo = '/auth'
+const user = useUserAuthStore()
+const router = useRouter()
+
+const handleLogout = async () => {
+    try {
+        const resp = await postLogout()
+        ElMessage.success(resp.message)
+        user.clearUser()
+        router.push(logoutRedirectTo)
+    } catch (err) {
+        ElMessage.error(String(err))
+    } finally {
+        //
+    }
+}
 </script>
 
 <template>
@@ -21,11 +42,15 @@ import avatar from '@/assets/avatar.png'
                 <el-avatar shape="square" :src="avatar" />
                 <template #dropdown>
                     <el-dropdown-menu>
-                        <el-dropdown-item class="profile-settings">
-                            个人设置
+                        <el-dropdown-item>
+                            <el-text type="primary">
+                                个人设置
+                            </el-text>
                         </el-dropdown-item>
-                        <el-dropdown-item class="logout-settings">
-                            退出登录
+                        <el-dropdown-item @click="handleLogout">
+                            <el-text type="danger">
+                                退出登录
+                            </el-text>
                         </el-dropdown-item>
                     </el-dropdown-menu>
                 </template>
@@ -40,11 +65,5 @@ import avatar from '@/assets/avatar.png'
 }
 .header-image {
   margin-right: auto;
-}
-:deep(.profile-settings) {
-  color: var(--el-color-primary);
-}
-:deep(.logout-settings) {
-    color: var(--el-color-danger);
 }
 </style>
