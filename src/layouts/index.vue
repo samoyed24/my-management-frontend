@@ -1,24 +1,24 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import SideBar from '@/layouts/Panel/SideBar/index.vue'
-import RouterViewContainer from '@/layouts/Panel/RouteViewContainer/index.vue'
-import HeaderBar from '@/layouts/Panel/HeaderBar/index.vue'
+import SideBar from '@/layouts/SideBar/index.vue'
+import MainContainer from '@/layouts/MainContainer.vue'
+import HeaderBar from '@/layouts/HeaderBar.vue'
 import router from '@/router'
 
 const sideBarRoutes = router.options.routes.filter(route => route.path === '/panel')[0]
 </script>
 
 <template>
-  <el-container style="height: 100%" class="panel-layout">
+  <el-container class="panel-layout full">
     <el-header>
       <header-bar />
     </el-header>
-    <el-container>
-      <el-aside>
-        <side-bar :routes="sideBarRoutes" />
+    <el-container class="full" style="min-height: 0;">
+      <el-aside class="full">
+          <side-bar :routes="sideBarRoutes" />
       </el-aside>
       <el-main>
-        <router-view-container />
+        <main-container />
       </el-main>
     </el-container>
   </el-container>

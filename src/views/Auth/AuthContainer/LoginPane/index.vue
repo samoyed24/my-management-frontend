@@ -12,7 +12,6 @@ const loginData = reactive<LoginData>({
 
 const userAuth = useUserAuthStore()
 const router = useRouter()
-const loginRedirectTo = '/panel'
 
 const handleLogin = async () => {
     try {
@@ -21,7 +20,7 @@ const handleLogin = async () => {
         if (resp.data) {
             userAuth.setUser(resp.data)
         }
-        router.push(loginRedirectTo)
+        router.push('/panel/dashboard')
     } catch (err) {
         ElMessage.error(String(err))
     } finally {
