@@ -2,10 +2,11 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+  width: 100%;
 }
 
 #app {
-  height: 100vh;
+  height: 100%;
 }
 
 .center {
@@ -21,23 +22,26 @@ html, body {
 }
 
 .glass-menu {
-  background: rgba(255, 255, 255, 0.15) !important;
+  background: rgba(255, 255, 255, 0.5) !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px);
-  border: none;
+  border: none !important;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
 
-.glass-menu > .el-menu-item {
+.glass-item {
   border-radius: 4px;
 }
 
-.glass-menu > .el-menu-item:hover {
+.glass-item:hover {
   background: rgba(255, 255, 255, 0.20) !important;
-
 }
 
-.glass-menu > .is-active {
-  background: rgba(255, 255, 255, 0.25) !important;
+.glass-item.is-active  {
+  background: rgba(255, 255, 255, 0.40) !important;
+}
+
+.glass-sub-item > .el-sub-menu__title:hover {
+  background: rgba(255, 255, 255, 0.20) !important;
 }

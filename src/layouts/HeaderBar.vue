@@ -6,7 +6,6 @@ import { ElMessage } from 'element-plus'
 import { useUserAuthStore } from '@/stores/auth'
 import { useRouter } from 'vue-router'
 
-const logoutRedirectTo = '/auth'
 const user = useUserAuthStore()
 const router = useRouter()
 
@@ -15,7 +14,7 @@ const handleLogout = async () => {
         const resp = await postLogout()
         ElMessage.success(resp.message)
         user.clearUser()
-        router.push(logoutRedirectTo)
+        router.push('/auth')
     } catch (err) {
         ElMessage.error(String(err))
     } finally {
