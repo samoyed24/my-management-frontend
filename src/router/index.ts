@@ -18,9 +18,17 @@ const routes: RouteRecordRaw[] = [
         }
       },
       {
+        path: 'project',
+        name: '项目管理',
+        component: () => import('@/views/Panel/Project.vue'),
+        meta: {
+          title: '项目管理',
+          icon: 'Promotion'
+        }
+      },
+      {
         path: 'statistics',
         name: '数据统计',
-        component: () => import('@/views/Panel/Dashboard.vue'),
         meta: {
           title: '数据统计',
           icon: 'DataAnalysis'
@@ -29,7 +37,7 @@ const routes: RouteRecordRaw[] = [
           {
             path: 'visible',
             name: '数据可视化',
-            component: () => import('@/views/Panel/Menu.vue'),
+            component: () => import('@/views/Panel/Project.vue'),
             meta: {
               title: '数据可视化',
               icon: 'DataLine'
@@ -47,7 +55,6 @@ const routes: RouteRecordRaw[] = [
           {
             path: 'special',
             name: '专项统计',
-            component: () => import('@/views/Panel/Menu.vue'),
             meta: {
               title: '专项统计',
               icon: 'List'

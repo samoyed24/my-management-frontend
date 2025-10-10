@@ -1,14 +1,8 @@
 <script setup lang="ts">
-import { RouteRecordRaw } from 'vue-router';
 import SideBarItem from './SideBarItem.vue'
+import { SideBarItemProps } from 'types/layout/SideBar'
 
-
-interface Props {
-  route: RouteRecordRaw
-  parentPath: string
-}
-
-const props = defineProps<Props>()
+const props = defineProps<SideBarItemProps>()
 
 </script>
 

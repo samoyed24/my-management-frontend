@@ -1,38 +1,31 @@
 import { MockMethod } from 'vite-plugin-mock';
 import mockResponse from '@/mock/wrapper';
+import Mock from 'mockjs';
+import { ProjectRequestParams } from 'types/project';
 
 export default [
   {
-    url: '/api/login',
-    method: 'post',
-    response: ({ body }: { body: LoginData }) => {
-      const { username, password } = body;
-      if (username === 'admin' && password === '123456') {
-        return mockResponse<UserStoreData>(
-            20000,
-            {
-              username: 'admin',
-              role: 'admin' 
-            },
-            "登录成功"
-        )
-      }
-      return mockResponse(
-        40003,
-        null,
-        "用户名或密码错误"
-      )
-    },
-  },
-  {
-    url: '/api/logout',
-    method: 'post',
-    response: () => {
+    url: '/api/project',
+    method: 'get',
+    response: ({ query }: { query: ProjectRequestParams }) => {
+      const data = Mock.mock({
+        'list|10': [
+          {
+            name: '@cword(7, 12)',
+            client: '@cword(15, 20)',
+            amount: '@integer(100000, 10000000)',
+            startDate: '@datetime',
+            status: () => Mock.Random.pick(['End', 'Process', 'Quality']),
+            description: '@cword(20, 50)'
+          },
+        ],
+        total: 50
+      })
       return mockResponse(
         20000,
-        null,
-        "退出登录成功"
+        data,
+        'OK'
       )
-    },
-  }
+    }
+  },
 ] as MockMethod[];
