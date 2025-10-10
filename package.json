@@ -13,7 +13,7 @@
     "axios": "^1.11.0",
     "element-plus": "^2.10.5",
     "esbuild": "^0.25.8",
-    "mockjs": "^1.1.0",
+    "eslint": "^9.33.0",
     "node": "^22.18.0",
     "pinia": "^3.0.3",
     "unplugin-icons": "^22.2.0",
@@ -24,9 +24,11 @@
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
+    "@types/mockjs": "^1.0.10",
     "@types/node": "^24.1.0",
     "@vitejs/plugin-vue": "^6.0.0",
     "@vue/tsconfig": "^0.7.0",
+    "mockjs": "^1.1.0",
     "typescript": "~5.8.3",
     "unplugin-auto-import": "^19.3.0",
     "unplugin-vue-components": "^28.8.0",

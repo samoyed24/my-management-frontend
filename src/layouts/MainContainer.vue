@@ -8,7 +8,9 @@ import Breadcrumb from '@/layouts/Breadcrumb.vue';
             <breadcrumb />
         </div>
         <div class="router-view-container">
-            <router-view />
+            <el-scrollbar class="custom-scrollbar">
+                <router-view />
+            </el-scrollbar>
         </div>
     </div>
 </template>
@@ -28,6 +30,11 @@ import Breadcrumb from '@/layouts/Breadcrumb.vue';
 }
 .router-view-container {
     flex: 20;
+    height: 100%;
+    padding: 1%;
+    min-height: 0;
 }
-
+.custom-scrollbar {
+    padding: 0 1%;
+}
 </style>
