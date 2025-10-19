@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const registerForm = ref<any>({
+const registerForm = ref<AuthFormData>({
     username: '',
     password: '',
 })

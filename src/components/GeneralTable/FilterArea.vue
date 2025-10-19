@@ -1,6 +1,21 @@
 <script setup lang="ts">
 import { DeleteFilled, Search } from '@element-plus/icons-vue';
-import { InputAreaProps, FilterParams } from 'types/components/GeneralTable/FilterArea';
+import CustomInput, { GeneralInputProps } from '@/components/Base/CustomInput.vue'
+
+export interface FilterParams {
+    [key: string]: any;
+}
+export interface InputAreaProps<T extends FilterParams> {
+    upperInput: FilterItem[]
+    lowerInput: FilterItem[]
+    generator: () => T
+}
+export interface FilterItem {
+    prop: string
+    span: number
+    label: string
+    input: GeneralInputProps
+}
 
 const props = defineProps<InputAreaProps<FilterParams>>()
 
@@ -25,8 +40,7 @@ const reset = () => {
           <el-row :gutter="10">
             <el-col v-for="(item, index) in props.upperInput" :key="index" :span="item.span">
               <el-form-item :label="item.label">
-                <el-input v-if="item.type === 'normal'" v-model="form[item.prop]" :placeholder="item.placeholder"></el-input>
-                <el-date-picker v-else-if="item.type === 'date'" v-model="form[item.prop]" :type="item.subType" placeholder="date"></el-date-picker>
+                <custom-input v-model="form[item.prop]" :input-props="item.input" />
               </el-form-item>
             </el-col>
           </el-row>
@@ -45,24 +59,7 @@ const reset = () => {
           <el-row :gutter="10">
             <el-col v-for="(item, index) in props.lowerInput" :key="index" :span="item.span">
               <el-form-item :label="item.label">
-                <el-input 
-                  v-if="item.type === 'normal'" 
-                  v-model="form[item.prop]" 
-                  :placeholder="item.placeholder"
-                ></el-input>
-                <el-date-picker 
-                  v-else-if="item.type === 'date'" 
-                  v-model="form[item.prop]" 
-                  :type="item.subType"
-                  :start-placeholder="item.startPlaceholder" 
-                  :end-placeholder="item.endPlaceholder"
-                ></el-date-picker>
-                <el-select
-                  v-else-if="item.type === 'select'"
-                  :placeholder="item.placeholder"
-                  v-model="form[item.prop]"
-                  :options="item.options"
-                ></el-select>
+                 <custom-input v-model="form[item.prop]" :input-props="item.input" />
               </el-form-item>
             </el-col>
           </el-row>

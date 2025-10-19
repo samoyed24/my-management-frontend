@@ -1,5 +1,11 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 
+interface APIResponse<T = any> {
+  code: number
+  message: string
+  data: T | null
+}
+
 const request = {
   async get<T = any>(url: string, params?: object, config?: AxiosRequestConfig): Promise<APIResponse<T>> {
     return axios.get<APIResponse<T>>(url, { params, ...config })

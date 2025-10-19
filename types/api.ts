@@ -1,5 +1,8 @@
-interface APIResponse<T = any> {
-  code: number
-  message: string
-  data: T | null
+interface AuthFormData {
+    username: string
+    password: string
+}
+interface UserStoreData {
+    username: string
+    role: string
 }

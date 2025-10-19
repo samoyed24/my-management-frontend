@@ -5,7 +5,8 @@ import { useUserAuthStore } from '@/stores/auth'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
 
-const loginData = reactive<LoginData>({
+
+const loginData = reactive<AuthFormData>({
     username: '',
     password: '',
 })
