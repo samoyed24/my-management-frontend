@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 
-interface APIResponse<T = any> {
+export interface APIResponse<T = any> {
   code: number
   message: string
   data: T | null
