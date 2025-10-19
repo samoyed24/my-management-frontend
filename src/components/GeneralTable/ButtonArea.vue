@@ -1,7 +1,17 @@
 <script setup lang="ts">
-import { ButtonAreaProps } from 'types/components/GeneralTable/ButtonArea';
+import { ButtonType } from 'types/base/button'
 
-
+export interface ButtonAreaRecord {
+    text: string
+    span: number
+    icon?: string
+    type: ButtonType
+    method: (...args: any[]) => any;
+}
+export interface ButtonAreaProps {
+    gutter: number
+    buttons: ButtonAreaRecord[]
+}
 
 const props = defineProps<ButtonAreaProps>()
 </script>

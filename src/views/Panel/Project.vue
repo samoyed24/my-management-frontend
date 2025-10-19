@@ -1,16 +1,14 @@
 <script setup lang="ts">
-import ButtonArea from '@/components/GeneralTable/ButtonArea.vue';
-import FilterArea from '@/components/GeneralTable/FilterArea.vue';
-import CustomTable from '@/components/GeneralTable/CustomTable.vue';
-import { ProjectFilterParams, ProjectTableData } from 'types/project';
+import ButtonArea, { ButtonAreaRecord } from '@/components/GeneralTable/ButtonArea.vue';
+import FilterArea, { FilterItem } from '@/components/GeneralTable/FilterArea.vue';
+import CustomTable, { PaginationProps, TableProp } from '@/components/GeneralTable/CustomTable.vue';
 import { Delete, EditPen } from '@element-plus/icons-vue';
 import { PROJECT_STATUS_COLOR_MAPPING, PROJECT_STATUS_MAPPING, ProjectStatusKey } from '@/constants/mapping/project';
 import { getProjectData } from '@/api/manager';
-import { GeneralInputProps } from 'types/components/base/input';
-import { PaginationProps } from 'types/components/GeneralTable/CustomTable';
-import { ButtonAreaRecord } from 'types/components/GeneralTable/ButtonArea';
-import { TableProp } from 'types/components/GeneralTable/CustomTable';
-import { Option } from 'types/components/base/input';
+import { ProjectAddFormModel, ProjectFilterParams, ProjectTableData } from 'types/project';
+import { createDialog } from '@/service/DialogService';
+import CustomForm, { CustomFormProps } from '@/components/GeneralForm/CustomForm.vue';
+import { Option } from '@/components/Base/CustomInput.vue'
 
 const projectFiltergGenerator: () => ProjectFilterParams = () => ({
     name: '',
@@ -28,42 +26,54 @@ const updateFilterParams = (newParams: ProjectFilterParams) => {
 const projectStatusOptions: Option<ProjectStatusKey>[] = 
     Object.entries(PROJECT_STATUS_MAPPING).map(([value, label]) => ({ value: value as ProjectStatusKey, label }));
 
-const upperInputProps: GeneralInputProps[] = [
+const upperFilterItems: FilterItem[] = [
     {
         span: 12,
         label: '项目名称',
         prop: 'name',
-        type: 'normal',
-        placeholder: '请输入项目名称'
+        input: {
+            type: 'input',
+            placeholder: '请输入项目名称'
+        }
     },
     {
         span: 12,
         label: '客户名称',
         prop: 'client',
-        type: 'normal',
-        placeholder: '请输入客户名称'
+        input: {
+            type: 'input',
+            placeholder: '请输入客户名称'
+        }
     },
 ]
 
-const lowerInputProps: GeneralInputProps[] = [
+const lowerFilterItems: FilterItem[] = [
     {
         span: 12,
         label: '开始日期',
         prop: 'startDate',
-        type: 'date',
-        subType: 'daterange',
-        startPlaceholder: '起始日期',
-        endPlaceholder: '终止日期'
+        input: {
+            type: 'date',
+            subType: 'daterange',
+            startPlaceholder: '起始日期',
+            endPlaceholder: '终止日期',
+        },
     },
     {
         span: 12,
         label: '项目状态',
         prop: 'status',
-        type: 'select',
-        options: projectStatusOptions,
-        placeholder: '请选择项目状态',
+        input: {
+            type: 'select',
+            options: projectStatusOptions,
+            placeholder: '请选择项目状态',
+        }
     },
 ]
+
+const handleProjectAddSubmit = (model: ProjectAddFormModel) => {
+    console.log(model)
+}
 
 const buttonRecords: ButtonAreaRecord[] = [
     {
@@ -71,7 +81,123 @@ const buttonRecords: ButtonAreaRecord[] = [
         text: "添加项目",
         icon: 'Plus',
         type: 'primary',
-        method: () => {}
+        method: () => createDialog<CustomFormProps<ProjectAddFormModel>>(CustomForm, {
+            title: '添加项目表单',
+            footer: {
+                show: false
+            },
+            width: '40%'
+        }, {
+            defaultGetter: projectAddFormModelGenerator,
+            formItems: [
+                {
+                    prop: 'name',
+                    label: '项目名称',
+                    input: {
+                        type: 'input',
+                        placeholder: '请输入项目名称',
+                    },
+                    rules: [
+                        {
+                            required: true,
+                            message: '请输入项目名称',
+                            trigger: 'blur',
+                        },
+                    ]
+                },
+                {
+                    prop: 'client',
+                    label: '客户名称',
+                    input: {
+                        type: 'input',
+                        placeholder: '请输入客户名称',
+                    }
+                },
+                {
+                    prop: 'amount',
+                    label: '合同额',
+                    input: {
+                        type: 'number',
+                        suffix: '元',
+                        precision: 2,
+                        width: '100%',
+                        min: 0,
+                        step: 1000
+                    }
+                },
+                {
+                    prop: 'startDate',
+                    label: '开始日期',
+                    input: {
+                        type: 'date',
+                        subType: 'datetime',
+                        width: '100%'
+                    }
+                },
+                {
+                    prop: 'status',
+                    label: '项目状态',
+                    input: {
+                        type: 'select',
+                        placeholder: '请选择项目状态',
+                        options: projectStatusOptions
+                    }
+                },
+                {
+                    prop: 'description',
+                    label: '描述',
+                    input: {
+                        type: 'textarea',
+                        placeholder: '请填写项目描述',
+                        rows: 5,
+                    },
+                }
+            ],
+            submit: {
+                method: handleProjectAddSubmit,
+                validationRules: {
+                    client: [
+                        {
+                            required: true,
+                            message: '请输入客户名称',
+                            trigger: 'blur',
+                        },
+                    ],
+                    name: [
+                        {
+                            required: true,
+                            message: '请输入项目名称',
+                            trigger: 'blur',
+                        },
+                    ],
+                    amount: [
+                        {
+                            required: true,
+                            message: '请设置正确的合同额',
+                            trigger: 'blur',
+                        },
+                    ],
+                    startDate: [
+                        {
+                            required: true,
+                            message: '请设置正确的开始日期',
+                            trigger: 'blur',
+                        },
+                    ],
+                    status: [
+                        {
+                            required: true,
+                            message: '请选择正确的项目状态',
+                            trigger: 'blur',
+                        },
+                    ]
+                },
+                useConfirm: true,
+                confirmText: '是否确认添加此项目？',
+            },
+            
+        }
+    )
     },
     {
         span: 3,
@@ -151,6 +277,15 @@ const tableProps: TableProp[] = [
     },
 ]
 
+const projectAddFormModelGenerator: () => ProjectAddFormModel = () => ({
+    name: '',
+    client: '',
+    amount: 0,
+    startDate: null,
+    status: null,
+    description: '',
+})
+
 const handleSortChange = () => {}
 
 const tableLoading = ref(false)
@@ -159,7 +294,7 @@ const setTableLoading = (status: boolean) => { tableLoading.value = status }
 const itemTotal = ref(0)
 
 const paginationProps = reactive<PaginationProps>({
-    pageSize: 10,
+    pageSize: 8,
     itemCount: 0,
     currentPage: 1,
 })
@@ -198,7 +333,12 @@ fetchData()
 
 <template>
     <el-space direction="vertical" class="full custom-space" :size="20">
-        <filter-area :generator="projectFiltergGenerator" :upper-input="upperInputProps" :lower-input="lowerInputProps" @update-filter="updateFilterParams" />
+        <filter-area 
+            :generator="projectFiltergGenerator" 
+            :upper-input="upperFilterItems" 
+            :lower-input="lowerFilterItems" 
+            @update-filter="updateFilterParams" 
+        />
         <button-area :gutter="24" :buttons="buttonRecords" />
         <custom-table 
             ref="customTableRef"

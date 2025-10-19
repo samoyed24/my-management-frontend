@@ -1,5 +1,6 @@
-import { FilterParams } from "types/props/components";
-import { ProjectStatusKey } from "@/constants/mapping/project";
+import { FormModel } from "@/components/GeneralForm/CustomForm.vue"
+import { FilterParams } from "@/components/GeneralTable/FilterArea.vue"
+import { ProjectStatusKey } from "@/constants/mapping/project"
 
 export interface ProjectFilterParams extends FilterParams {
     name: string
@@ -7,7 +8,6 @@ export interface ProjectFilterParams extends FilterParams {
     startDate: Date[] | null[]
     status: ProjectStatusKey | null
 }
-
 export interface ProjectTableData {
     name: string
     client: string
@@ -16,7 +16,6 @@ export interface ProjectTableData {
     status: ProjectStatusKey
     description: string
 }
-
 export interface ProjectRequestParams {
     name: string | null
     client: string | null
@@ -26,8 +25,15 @@ export interface ProjectRequestParams {
     pageSize: number
     currentPage: number
 }
-
 export interface ProjectResponse {
     list: ProjectTableData[]
     total: number
+}
+export interface ProjectAddFormModel extends FormModel {
+    name: string
+    client: string
+    amount: number
+    startDate: Date | null,
+    status: ProjectStatusKey | null
+    description: string
 }

@@ -5,7 +5,7 @@ export default [
   {
     url: '/api/login',
     method: 'post',
-    response: ({ body }: { body: LoginData }) => {
+    response: ({ body }: { body: AuthFormData }) => {
       const { username, password } = body;
       if (username === 'admin' && password === '123456') {
         return mockResponse<UserStoreData>(

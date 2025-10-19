@@ -1,7 +1,7 @@
 import { MockMethod } from 'vite-plugin-mock';
 import mockResponse from '@/mock/wrapper';
 import Mock from 'mockjs';
-import { ProjectRequestParams } from 'types/project';
+import { ProjectRequestParams } from '@/views/Panel/Project.vue';
 
 export default [
   {
@@ -9,7 +9,7 @@ export default [
     method: 'get',
     response: ({ query }: { query: ProjectRequestParams }) => {
       const data = Mock.mock({
-        'list|10': [
+        'list|8': [
           {
             name: '@cword(7, 12)',
             client: '@cword(15, 20)',
@@ -19,7 +19,7 @@ export default [
             description: '@cword(20, 50)'
           },
         ],
-        total: 50
+        total: 56
       })
       return mockResponse(
         20000,
