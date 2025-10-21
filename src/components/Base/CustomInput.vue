@@ -54,7 +54,7 @@ export interface TextareaProps extends BaseInputProps {
     minLength?: number | string
     resize?: "none" | "both" | "horizontal" | "vertical"
 }
-export type GeneralInputProps<T extends object> = InputProps
+export type GeneralInputProps<T extends object = any> = InputProps
     | SelectProps<T>
     | DateProps
     | NumberProps

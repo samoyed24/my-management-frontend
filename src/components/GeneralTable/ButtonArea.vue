@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ButtonType } from 'types/base/button'
+import { ButtonType } from 'element-plus';
+
 
 export interface ButtonAreaRecord {
     text: string
