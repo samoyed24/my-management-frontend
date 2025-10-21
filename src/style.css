@@ -22,7 +22,7 @@ html, body {
 }
 
 .glass-menu {
-  background: rgba(255, 255, 255, 0.5) !important;
+  background: rgba(255, 255, 255, 0.8) !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px);
   border: none !important;
@@ -35,7 +35,7 @@ html, body {
 }
 
 .glass-item:hover {
-  background: rgba(255, 255, 255, 0.20) !important;
+  background: rgba(255, 255, 255, 0.25) !important;
 }
 
 .glass-item.is-active  {
@@ -43,5 +43,5 @@ html, body {
 }
 
 .glass-sub-item > .el-sub-menu__title:hover {
-  background: rgba(255, 255, 255, 0.20) !important;
+  background: rgba(255, 255, 255, 0.25) !important;
 }

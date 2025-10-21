@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import Breadcrumb from '@/layouts/Breadcrumb.vue';
-import DialogForm from '@/components/Base/DialogContainer.vue';
 </script>
 
 <template>

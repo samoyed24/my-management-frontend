@@ -2,7 +2,7 @@
 import ButtonArea, { ButtonAreaRecord } from '@/components/GeneralTable/ButtonArea.vue';
 import FilterArea, { FilterItem } from '@/components/GeneralTable/FilterArea.vue';
 import CustomTable, { PaginationProps, TableProp } from '@/components/GeneralTable/CustomTable.vue';
-import { Delete, EditPen } from '@element-plus/icons-vue';
+import { Delete, EditPen, View } from '@element-plus/icons-vue';
 import { getProjectData } from '@/api/manager';
 import { ProjectAddFormModel, ProjectFilterParams, ProjectStatus, ProjectTableData } from 'types/project';
 import { createDialog } from '@/service/DialogService';
@@ -258,12 +258,12 @@ const tableProps: TableProp[] = [
     {
         label: '项目名称',
         prop: 'name',
-        width: 160,
+        width: 200,
     },
     {
         label: '客户名称',
         prop: 'client',
-        width: 160,
+        width: 200,
     },
     {
         label: '合同额(元)',
@@ -281,11 +281,6 @@ const tableProps: TableProp[] = [
         label: '状态',
         prop: 'status',
         width: 100
-    },
-    {
-        label: '描述',
-        prop: 'description',
-        width: 160,
     },
     {
         label: '操作',
@@ -379,6 +374,12 @@ fetchData()
                 </div>
             </template>
             <template #operation="{ row } : { row: ProjectTableData }">
+                <el-button type="primary" text>
+                    <el-icon>
+                        <View />
+                    </el-icon>
+                    详情
+                </el-button>
                 <el-button type="primary" text>
                     <el-icon>
                         <EditPen />

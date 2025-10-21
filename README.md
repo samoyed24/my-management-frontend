@@ -4,9 +4,9 @@
 
 ![登录界面](/samples/login.png)
 
-### 管理平台主界面
+### 表格界面
 
-![管理平台主界面](/samples/main.png)
+![表格界面](/samples/table.png)
 
 #### 持续更新中，将添加业务示例、深色模式、国际化等
 
