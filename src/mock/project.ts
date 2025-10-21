@@ -13,7 +13,7 @@ export default [
           {
             name: '@cword(7, 12)',
             client: '@cword(15, 20)',
-            amount: '@integer(100000, 10000000)',
+            amount: '@float(100000, 10000000, 2, 2)',
             startDate: '@datetime',
             status: () => Mock.Random.pick(['End', 'Process', 'Quality']),
             description: '@cword(20, 50)'
