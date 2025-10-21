@@ -3,12 +3,12 @@ import ButtonArea, { ButtonAreaRecord } from '@/components/GeneralTable/ButtonAr
 import FilterArea, { FilterItem } from '@/components/GeneralTable/FilterArea.vue';
 import CustomTable, { PaginationProps, TableProp } from '@/components/GeneralTable/CustomTable.vue';
 import { Delete, EditPen } from '@element-plus/icons-vue';
-import { PROJECT_STATUS_COLOR_MAPPING, PROJECT_STATUS_MAPPING, ProjectStatusKey } from '@/constants/mapping/project';
 import { getProjectData } from '@/api/manager';
-import { ProjectAddFormModel, ProjectFilterParams, ProjectTableData } from 'types/project';
+import { ProjectAddFormModel, ProjectFilterParams, ProjectStatus, ProjectTableData } from 'types/project';
 import { createDialog } from '@/service/DialogService';
 import CustomForm, { CustomFormProps } from '@/components/GeneralForm/CustomForm.vue';
 import { Option } from '@/components/Base/CustomInput.vue'
+import { ProjectStatusColor, ProjectStatusValue } from '@/constants/mapping/project';
 
 const projectFiltergGenerator: () => ProjectFilterParams = () => ({
     name: '',
@@ -23,8 +23,20 @@ const updateFilterParams = (newParams: ProjectFilterParams) => {
     fetchData()
 }
 
-const projectStatusOptions: Option<ProjectStatusKey>[] = 
-    Object.entries(PROJECT_STATUS_MAPPING).map(([value, label]) => ({ value: value as ProjectStatusKey, label }));
+const projectStatusOptions: Option<ProjectStatus>[] = [
+    {
+        value: 'End',
+        label: ProjectStatusValue.End,
+    },
+    {
+        value: 'Process',
+        label: ProjectStatusValue.Process,
+    },
+    {
+        value: 'Quality',
+        label: ProjectStatusValue.Quality,
+    },
+]
 
 const upperFilterItems: FilterItem[] = [
     {
@@ -149,7 +161,11 @@ const buttonRecords: ButtonAreaRecord[] = [
                     input: {
                         type: 'textarea',
                         placeholder: '请填写项目描述',
-                        rows: 5,
+                        autosize: {
+                            minRows: 3,
+                            maxRows: 6
+                        },
+                        resize: 'none',
                     },
                 }
             ],
@@ -281,7 +297,7 @@ const projectAddFormModelGenerator: () => ProjectAddFormModel = () => ({
     name: '',
     client: '',
     amount: 0,
-    startDate: null,
+    startDate: Date.now(),
     status: null,
     description: '',
 })
@@ -354,12 +370,12 @@ fetchData()
             :pagination-props="paginationProps"
         >
             <template #amount="{ row } : { row: ProjectTableData }">
-                {{ row.amount / 100 }}
+                {{ row.amount }}
             </template>
             <template #status="{ row } : { row: ProjectTableData }">
                 <div class="status-cell">
-                    <span class="dot" :style="{backgroundColor: PROJECT_STATUS_COLOR_MAPPING[row.status]}"></span>
-                    {{ PROJECT_STATUS_MAPPING[row.status] }}
+                    <span class="dot" :style="{backgroundColor: ProjectStatusColor[row.status]}"></span>
+                    {{ ProjectStatusValue[row.status] }}
                 </div>
             </template>
             <template #operation="{ row } : { row: ProjectTableData }">
@@ -369,12 +385,16 @@ fetchData()
                     </el-icon>
                     编辑
                 </el-button>
-                <el-button type="danger" text>
-                    <el-icon>
-                        <Delete />
-                    </el-icon>
-                    删除
-                </el-button>
+                <el-popconfirm title="确定删除？">
+                    <template #reference>
+                        <el-button type="danger" text>
+                            <el-icon>
+                                <Delete />
+                            </el-icon>
+                            删除
+                        </el-button>
+                    </template>
+                </el-popconfirm>
             </template>
         </custom-table>
     </el-space>

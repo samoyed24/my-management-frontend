@@ -109,12 +109,14 @@ defineExpose({
         @closed="destroyAfterClosed"
         :before-close="handleBeforeClose"
     >
-        <div>
-            <component :is="divComponent" v-bind="divProps" />
-        </div>
+        <component :is="divComponent" v-bind="divProps" />
         <div slot="footer" v-if="dialogProps.footer?.show">
             <el-button @click="dialogProps.footer.cancel?.method">{{ dialogProps.footer.cancel?.text }}</el-button>
             <el-button type="primary" @click="dialogProps.footer.confirm?.method">{{ dialogProps.footer.confirm?.text }}</el-button>
         </div>
     </el-dialog>
 </template>
+
+<style scoped>
+
+</style>

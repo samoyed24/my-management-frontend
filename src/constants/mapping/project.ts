@@ -1,13 +1,13 @@
-export const PROJECT_STATUS_MAPPING = {
-  End: '已完结',
-  Process: '进行中',
-  Quality: '质保',
-} as const;
+import { ProjectStatus } from "types/project"
 
-export type ProjectStatusKey = keyof typeof PROJECT_STATUS_MAPPING;
-
-export const PROJECT_STATUS_COLOR_MAPPING = {
-    End: '#F63518',
-    Process: '#23CF07',
+export const ProjectStatusColor: ProjectStatus = {
+    End: '#23CF07',
+    Process: '#f6a118ff',
     Quality: '#1277FA'
+}
+
+export const ProjectStatusValue: ProjectStatus = {
+    End: '已完结',
+    Process: '处理中',
+    Quality: '质检'
 }

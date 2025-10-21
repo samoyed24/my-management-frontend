@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import { InputAutoSize } from 'element-plus'
+
 
 export interface CustomInputProps {
-    inputProps: GeneralInputProps
+    inputProps: GeneralInputProps<any>
 }
 export type InputType = "input" | "select" | "number" | "date" | "datetime" | "number" | "textarea"
 export interface BaseInputProps {
@@ -12,7 +14,7 @@ export interface BaseInputProps {
 export interface InputProps extends BaseInputProps {
     type: 'input'
 }
-export interface SelectProps<T extends string = string> extends BaseInputProps {
+export interface SelectProps<T extends object> extends BaseInputProps {
     type: 'select'
     options: Option<T>[]
 }
@@ -46,13 +48,18 @@ export interface DateProps extends BaseInputProps {
 export interface TextareaProps extends BaseInputProps {
     type: 'textarea'
     rows?: number
+    autosize?: InputAutoSize
+    showWordLimit?: boolean
+    maxLength?: number | string
+    minLength?: number | string
+    resize?: "none" | "both" | "horizontal" | "vertical"
 }
-export type GeneralInputProps<T extends string = string> = InputProps
+export type GeneralInputProps<T extends object> = InputProps
     | SelectProps<T>
     | DateProps
     | NumberProps
     | TextareaProps
-export interface Option<V extends string> { value: V, label: string, disabled?: boolean }
+export interface Option<T, K extends keyof T = keyof T> { value: K, label: T[K], disabled?: boolean }
 
 const props = defineProps<CustomInputProps>()
 const item = props.inputProps
@@ -89,6 +96,11 @@ const data = defineModel<any>()
         v-model="data"
         :rows="item.rows"
         :style="{width: item.width}"
+        :autosize="item.autosize"
+        :show-word-limit="item.showWordLimit"
+        :resize="item.resize"
+        :maxlength="item.maxLength"
+        :minlength="item.minLength"
     />
     <el-input-number
         v-else-if="item.type === 'number'"
