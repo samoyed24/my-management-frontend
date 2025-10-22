@@ -5,6 +5,7 @@ import { ElMessage, ElNotification } from 'element-plus'
 import { SignUpData } from 'types/dashboard'
 import { postSignUp } from '@/api/dashboard'
 import { APIError } from '@/api/wrapper'
+import { WordsOfWisdom } from '@/util/utils'
 
 export interface UserInfoBoardData {
     username: string
@@ -45,6 +46,7 @@ const getGreetings = () => {
 }
 
 const getUserInfoBoardData = () => {
+    const wordOfWisdom = new WordsOfWisdom()
     userInfoBoardData.value = {
         username: user.username,
         role: user.role,
@@ -52,10 +54,10 @@ const getUserInfoBoardData = () => {
         registerDay: 7,
         signUp: {
             loading: false,
-            doneToday: false, // TODO 这几项用Mock模拟一下
+            doneToday: false,
             rank: 0,
         },
-        wordOfWisdom: '“一个人可以被毁灭，但不能被打败。真正的坚强不是没有恐惧，而是带着恐惧仍然前行。” —— 海明威'
+        wordOfWisdom: wordOfWisdom.getRandom(),
     }
 }
 
