@@ -3,7 +3,7 @@ import ButtonArea, { ButtonAreaRecord } from '@/components/GeneralTable/ButtonAr
 import FilterArea, { FilterItem } from '@/components/GeneralTable/FilterArea.vue';
 import CustomTable, { PaginationProps, TableProp } from '@/components/GeneralTable/CustomTable.vue';
 import { Delete, EditPen, View } from '@element-plus/icons-vue';
-import { getProjectData } from '@/api/manager';
+import { getProjectData } from '@/api/project';
 import { ProjectAddFormModel, ProjectFilterParams, ProjectStatus, ProjectTableData } from 'types/project';
 import { createDialog } from '@/service/DialogService';
 import CustomForm, { CustomFormProps } from '@/components/GeneralForm/CustomForm.vue';

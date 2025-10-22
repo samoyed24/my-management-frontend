@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import LoginPane from '@/views/Auth/AuthContainer/LoginPane/index.vue'
-import RegisterPane from '@/views/Auth/AuthContainer/RegisterPane/index.vue'
-import AuthCarousel from '@/views/Auth/AuthCarousel.vue'
+import AuthCarousel from '@/components/Auth/AuthCarousel.vue'
 const activeName = ref('login')
 const formRef = ref(null)
 </script>

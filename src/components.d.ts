@@ -9,7 +9,10 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AboutView: typeof import('./components/AboutView.vue')['default']
+    Auth: typeof import('./components/Auth/index.vue')['default']
+    AuthCarousel: typeof import('./components/Auth/AuthCarousel.vue')['default']
     ButtonArea: typeof import('./components/GeneralTable/ButtonArea.vue')['default']
+    CustomCard: typeof import('./components/Base/CustomCard.vue')['default']
     CustomForm: typeof import('./components/GeneralForm/CustomForm.vue')['default']
     CustomFormItem: typeof import('./components/GeneralForm/CustomFormItem.vue')['default']
     CustomInput: typeof import('./components/Base/CustomInput.vue')['default']
@@ -70,9 +73,15 @@ declare module 'vue' {
     FilterArea: typeof import('./components/GeneralTable/FilterArea.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
     Input: typeof import('./components/Base/Input.vue')['default']
+    LoginPane: typeof import('./components/Auth/LoginPane.vue')['default']
+    NoticeBoard: typeof import('./components/GeneralDashboard/NoticeBoard.vue')['default']
+    NoticeTable: typeof import('./components/GeneralDashboard/NoticeTable.vue')['default']
     PopupForm: typeof import('./components/PopupForm.vue')['default']
+    RegisterPane: typeof import('./components/Auth/RegisterPane.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    StatisticBoard: typeof import('./components/GeneralDashboard/StatisticBoard.vue')['default']
+    UserInfoBoard: typeof import('./components/GeneralDashboard/UserInfoBoard.vue')['default']
   }
   export interface GlobalDirectives {
     vLoading: typeof import('element-plus/es')['ElLoadingDirective']

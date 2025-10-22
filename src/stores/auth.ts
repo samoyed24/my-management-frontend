@@ -20,6 +20,12 @@ export const useUserAuthStore = defineStore('user', {
             this.role = ''
             localStorage.removeItem('username')
             localStorage.removeItem('role')
+        },
+        getUser(): UserStoreData {
+            return {
+                username: this.username,
+                role: this.role,
+            }
         }
     }
 })

@@ -1,9 +1,15 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
+import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
+import { ElMessage } from "element-plus";
 
 export interface APIResponse<T = any> {
   code: number
   message: string
   data: T | null
+}
+
+export interface APIError {
+  errCode?: number
+  errMsg: string
 }
 
 const request = {
@@ -12,9 +18,24 @@ const request = {
       .then((res: AxiosResponse<APIResponse<T>>) => {
         const response = res.data
         if (!String(response.code).startsWith('2')) {
-          throw new Error(response.message)
+          const err: APIError = {
+            errCode: response.code,
+            errMsg: response.message,
+          }
+          throw err
         }
         return response
+      })
+      .catch((err: AxiosError) => {
+          const apiErr: APIError = {
+            errCode: err.response?.status,
+            errMsg: err.message,
+          }
+          throw apiErr
+      })
+      .catch((err: APIError) => {
+        ElMessage.error(`Errcode: ${err.errCode} ${err.errMsg}`)
+        throw err
       })
   },
 
@@ -23,9 +44,24 @@ const request = {
       .then((res: AxiosResponse<APIResponse<T>>) => {
         const response = res.data
         if (!String(response.code).startsWith('2')) {
-          throw new Error(response.message)
+          const err: APIError = {
+            errCode: response.code,
+            errMsg: response.message,
+          }
+          throw err
         }
         return response
+      })
+      .catch((err: AxiosError) => {
+          const apiErr: APIError = {
+            errCode: err.response?.status,
+            errMsg: err.message,
+          }
+          throw apiErr
+      })
+      .catch((err: APIError) => {
+        ElMessage.error(`Errcode: ${err.errCode} ${err.errMsg}`)
+        throw err
       })
   },
 }
