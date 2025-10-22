@@ -13,6 +13,7 @@ declare module 'vue' {
     AuthCarousel: typeof import('./components/Auth/AuthCarousel.vue')['default']
     ButtonArea: typeof import('./components/GeneralTable/ButtonArea.vue')['default']
     CustomCard: typeof import('./components/Base/CustomCard.vue')['default']
+    CustomCarousel: typeof import('./components/Base/CustomCarousel.vue')['default']
     CustomForm: typeof import('./components/GeneralForm/CustomForm.vue')['default']
     CustomFormItem: typeof import('./components/GeneralForm/CustomFormItem.vue')['default']
     CustomInput: typeof import('./components/Base/CustomInput.vue')['default']
@@ -80,6 +81,7 @@ declare module 'vue' {
     RegisterPane: typeof import('./components/Auth/RegisterPane.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SideCarousel: typeof import('./components/GeneralDashboard/SideCarousel.vue')['default']
     StatisticBoard: typeof import('./components/GeneralDashboard/StatisticBoard.vue')['default']
     UserInfoBoard: typeof import('./components/GeneralDashboard/UserInfoBoard.vue')['default']
   }

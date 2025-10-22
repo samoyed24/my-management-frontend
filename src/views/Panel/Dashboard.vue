@@ -5,10 +5,15 @@
 <template>
     <el-container>
         <el-main>
-            <statistic-board />
+            <el-space direction="vertical" :fill="true" size="large">
+                <statistic-board />  
+            </el-space>
         </el-main>
         <el-aside>
-            <user-info-board />
+            <el-space direction="vertical" :fill="true" size="large">
+                <user-info-board />
+                <side-carousel />
+            </el-space>
         </el-aside>
     </el-container>
 </template>
@@ -20,5 +25,8 @@
 }
 .el-aside {
     padding-left: 10px;
+}
+.el-space {
+    width: 100%;
 }
 </style>
