@@ -59,7 +59,11 @@ export type GeneralInputProps<T extends object = any> = InputProps
     | DateProps
     | NumberProps
     | TextareaProps
-export interface Option<T, K extends keyof T = keyof T> { value: K, label: T[K], disabled?: boolean }
+export interface Option<T, K extends keyof T = keyof T> {
+     value: K, 
+     label: T[K], 
+     disabled?: boolean 
+}
 
 const props = defineProps<CustomInputProps>()
 const item = props.inputProps

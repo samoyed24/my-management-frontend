@@ -154,7 +154,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/auth',
     name: '鉴权',
-    component: () => import('@/views/Auth/index.vue'),
+    component: () => import('@/views/Auth/Auth.vue'),
   },
   {
     path: '/',

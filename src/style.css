@@ -45,3 +45,8 @@ html, body {
 .glass-sub-item > .el-sub-menu__title:hover {
   background: rgba(255, 255, 255, 0.25) !important;
 }
+
+.small-gray-text {
+  font-size: small;
+  color: gray;
+}
