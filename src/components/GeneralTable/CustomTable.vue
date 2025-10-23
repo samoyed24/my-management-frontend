@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 export interface TableProp {
-    label: string
+    label?: string
     prop: string
     width?: number | string
     sortable?: boolean | string

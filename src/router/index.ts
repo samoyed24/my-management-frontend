@@ -11,7 +11,7 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'dashboard',
         name: '仪表盘',
-        component: () => import('@/views/Panel/Dashboard.vue'),
+        component: () => import('@/views/Panel/Dashboard/index.vue'),
         meta: {
           title: '仪表盘',
           icon: 'Odometer'
@@ -154,7 +154,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/auth',
     name: '鉴权',
-    component: () => import('@/views/Auth/Auth.vue'),
+    component: () => import('@/views/Auth/index.vue'),
   },
   {
     path: '/',

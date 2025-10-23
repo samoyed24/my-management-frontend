@@ -1,12 +1,18 @@
 <script setup lang="ts">
-
+import StatisticBoard from './components/StatisticBoard.vue';
+import StatisticChart from './components/StatisticChart/index.vue'
+import UserInfoBoard from './components/UserInfoBoard.vue';
+import SideCarousel from './components/SideCarousel.vue';
+import AnnouncementBoard from './components/AnnouncementBoard.vue';
 </script>
 
 <template>
     <el-container>
         <el-main>
             <el-space direction="vertical" :fill="true" size="large">
-                <statistic-board />  
+                <statistic-board />
+                <statistic-chart />
+                <announcement-board />
             </el-space>
         </el-main>
         <el-aside>

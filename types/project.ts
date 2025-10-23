@@ -1,4 +1,4 @@
-import { FormModel } from "@/components/GeneralForm/CustomForm.vue"
+import { FormModel } from "@/components/Base/CustomForm.vue"
 import { FilterParams } from "@/components/GeneralTable/FilterArea.vue"
 
 export interface ProjectFilterParams extends FilterParams {
