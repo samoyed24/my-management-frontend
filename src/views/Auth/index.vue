@@ -1,13 +1,8 @@
 <script setup lang="ts">
-import Carousel1 from '@/assets/auth/carousel-1.jpg'
-import Carousel2 from '@/assets/auth/carousel-2.jpg'
-import Carousel3 from '@/assets/auth/carousel-3.jpg'
+import LoginPane from './components/LoginPane.vue'
+import RegisterPane from './components/RegisterPane.vue'
+import AuthCarousel from './components/AuthCarousel.vue'
 
-const carouselImageList = [
-    Carousel1,
-    Carousel2,
-    Carousel3
-]
 const activeName = ref('login')
 const formRef = ref(null)
 </script>
@@ -17,7 +12,7 @@ const formRef = ref(null)
         <div class="auth-container glass-menu">
             <el-row class="full">
                 <el-col :span="12">
-                    <custom-carousel :image-list="carouselImageList" :height="'100%'"></custom-carousel>
+                    <auth-carousel />
                 </el-col>
                 <el-col :span="12">
                     <el-tabs v-model="activeName" type="border-card" class="full">

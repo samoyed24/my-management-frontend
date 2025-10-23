@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <custom-card :header="{ icon: 'DataLine', text: '统计数据' }">
+    <custom-card :header="{ icon: 'DataLine', text: '统计数据面板' }">
         <template #default>
             <el-row :gutter="10">
                 <el-col :span="8">

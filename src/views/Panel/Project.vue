@@ -6,7 +6,7 @@ import { Delete, EditPen, View } from '@element-plus/icons-vue';
 import { getProjectData } from '@/api/project';
 import { ProjectAddFormModel, ProjectFilterParams, ProjectStatus, ProjectTableData } from 'types/project';
 import { createDialog } from '@/service/DialogService';
-import CustomForm, { CustomFormProps } from '@/components/GeneralForm/CustomForm.vue';
+import CustomForm, { CustomFormProps } from '@/components/Base/CustomForm.vue';
 import { Option } from '@/components/Base/CustomInput.vue'
 import { ProjectStatusColor, ProjectStatusValue } from '@/constants/mapping/project';
 

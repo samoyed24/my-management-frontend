@@ -10,9 +10,5 @@ const carouselList = ref<string[]>([
 </script>
 
 <template>
-    <el-carousel class="full" height="100%">
-        <el-carousel-item v-for="carousel in carouselList">
-            <el-image :src="carousel" fit="cover" />
-        </el-carousel-item>
-    </el-carousel>
+    <custom-carousel :image-list="carouselList" :height="'100%'" />
 </template>
