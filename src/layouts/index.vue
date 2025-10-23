@@ -33,9 +33,20 @@ const sideBarRoutes = router.options.routes.filter(route => route.path === '/pan
   /* margin: 6px 0; */
   padding: 5px 10px;
 }
-.el-main, .el-aside {
-  padding: 40px 20px;
+/* .el-main, .el-aside {
+  padding: 30px 20px;
+} */
+.el-main {
+  padding-right: 20px;
+  padding-top: 25px;
 }
+
+.el-aside {
+  padding-left: 20px;
+  padding-top: 25px;
+  padding-bottom: 20px;
+}
+
 .panel-layout {
   background-image: url('@/assets/bg/panel-bg.jpg');
   background-size: cover;

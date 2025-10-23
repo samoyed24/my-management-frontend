@@ -62,7 +62,7 @@ export default defineConfig(({ command }) => {
       }),
 
       viteMockServe({
-        mockPath: 'src/mock',             // mock 文件夹路径
+        mockPath: 'src/mocks',             // mock 文件夹路径
         enable: command === 'serve',  // 仅开发模式启用
         watchFiles: true                   // 自动热更新 mock 文件
       }),

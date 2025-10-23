@@ -89,7 +89,7 @@ const handleProjectAddSubmit = (model: ProjectAddFormModel) => {
 
 const buttonRecords: ButtonAreaRecord[] = [
     {
-        span: 3,
+        span: 4,
         text: "添加项目",
         icon: 'Plus',
         type: 'primary',
@@ -216,35 +216,35 @@ const buttonRecords: ButtonAreaRecord[] = [
     )
     },
     {
-        span: 3,
+        span: 4,
         text: "刷新",
         icon: 'Refresh',
         type: 'primary',
         method: () => fetchData()
     },
     {
-        span: 3,
+        span: 4,
         text: "导出全部",
         icon: 'Upload',
         type: 'success',
         method: () => {}
     },
     {
-        span: 3,
+        span: 4,
         text: "导出当前视图",
         icon: 'Upload',
         type: 'success',
         method: () => {}
     },
     {
-        span: 3,
+        span: 4,
         text: "导入Excel",
         icon: 'Download',
         type: 'success',
         method: () => {}
     },
     {
-        span: 3,
+        span: 4,
         text: "下载导入模板",
         icon: 'Download',
         type: 'success',
@@ -258,33 +258,34 @@ const tableProps: TableProp[] = [
     {
         label: '项目名称',
         prop: 'name',
-        width: 200,
+        minWidth: '12.5%',
     },
     {
         label: '客户名称',
         prop: 'client',
-        width: 200,
+        minWidth: '12.5%',
     },
     {
         label: '合同额(元)',
         prop: 'amount',
-        width: 120,
+        minWidth: '10%',
         sortable: 'custom'
     },
     {
         label: '开始日期',
         prop: 'startDate',
-        width: 160,
+        minWidth: '15%',
         sortable: 'custom'
     },
     {
         label: '状态',
         prop: 'status',
-        width: 100
+        minWidth: '10%'
     },
     {
         label: '操作',
         prop: 'operation',
+        minWidth: '25%'
     },
 ]
 
