@@ -1,8 +1,5 @@
 <script setup lang="ts">
 
-// const carouselList = ref<string[]>([
-//     Carousel1, Carousel2, Carousel3
-// ])
 export interface CustomCarouselProps {
     imageList: string[]
     height?: string

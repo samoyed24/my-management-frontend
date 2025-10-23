@@ -1,5 +1,5 @@
 import { MockMethod } from 'vite-plugin-mock';
-import mockResponse from '@/mock/wrapper';
+import mockResponse from '@/mocks/wrapper';
 
 export default [
   {

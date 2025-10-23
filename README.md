@@ -4,6 +4,10 @@
 
 ![登录界面](/samples/login.png)
 
+### 仪表盘界面
+
+![仪表盘界面](/samples/dashboard.png)
+
 ### 表格界面
 
 ![表格界面](/samples/table.png)

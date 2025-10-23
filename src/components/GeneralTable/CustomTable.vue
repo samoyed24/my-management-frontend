@@ -3,8 +3,9 @@
 export interface TableProp {
     label: string
     prop: string
-    width?: number
+    width?: number | string
     sortable?: boolean | string
+    minWidth?: string
 }
 export interface TableData {}
 export interface CustomTableProps {
@@ -51,7 +52,7 @@ defineExpose({ scrollToTop })
                 label="#" 
                 prop="index" 
                 v-if="props.showIndex"
-                :width="60"
+                minWidth="5%"
             >
                 <template #default="scope">
                     {{ (paginationProps.currentPage - 1) * paginationProps.pageSize + scope.$index + 1  }}
@@ -63,6 +64,7 @@ defineExpose({ scrollToTop })
                 :label="item.label"
                 :prop="item.prop"
                 :width="item.width"
+                :min-width="item.minWidth"
                 :sortable="item.sortable"
             >
                 <template #default="scope">
