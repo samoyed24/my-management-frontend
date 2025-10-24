@@ -141,7 +141,7 @@ const calcTypeFromLevel = (level: number)  => {
 </script>
 
 <template>
-    <custom-card :header="{ icon: 'Notification', text: '公告栏' }" :no-padding="true">
+    <custom-card :header="{ icon: 'BellFilled', text: '公告栏' }" :no-padding="true">
         <custom-table 
             ref="customTableRef"
             :table-data="tableData" 

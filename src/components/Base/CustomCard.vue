@@ -12,10 +12,10 @@ const slots = useSlots()
 </script>
 
 <template>
-<el-card :body-style="{ padding: noPadding ? 0 : undefined }">
+<el-card :body-style="{ padding: noPadding ? 0 : undefined }" header-class="custom-header">
     <template #header v-if="slots.header || header">
         <slot name="header">
-            <el-icon :size="14" :style="{ paddingRight: '4px' }" v-if="header?.icon">
+            <el-icon :size="18" :style="{ paddingRight: '8px' }" v-if="header?.icon">
                 <component :is="header?.icon" />
             </el-icon>
             <span>
@@ -36,6 +36,10 @@ const slots = useSlots()
 </el-card>
 </template>
 
-<style scoped>
-
+<style lang="css">
+.custom-header {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
 </style>

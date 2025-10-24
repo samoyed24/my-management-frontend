@@ -51,7 +51,7 @@ setValue()
     <div class="card-outer">
         <div class="statistic-icon">
             <slot name="icon">
-                <div style="margin-right: 20px;">
+                <div>
                     <el-icon v-if="props.icon.fromElIcon" size="40">
                         <component :is="props.icon.fromElIcon" />
                     </el-icon>
@@ -109,6 +109,7 @@ setValue()
 <style scoped>
 .card-outer {
     display: flex;
+    text-align: center;
 }
 .statistic-icon {
     flex: 2;

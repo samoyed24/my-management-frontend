@@ -36,6 +36,7 @@ const handleChangeRoute = () => {
 <style lang="css" scoped>
 .icon-area {
     margin: 3px 21px;
+    margin-bottom: 7px;
     display: flex;
     border-radius: 3px;
     background-color: var(--el-color-primary);
