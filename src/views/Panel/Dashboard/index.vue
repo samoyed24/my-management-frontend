@@ -5,6 +5,7 @@ import UserInfoBoard from './components/UserInfoBoard.vue';
 import SideCarousel from './components/SideCarousel.vue';
 import AnnouncementBoard from './components/AnnouncementBoard.vue';
 import QuickEntry from './components/QuickEntry/index.vue';
+import ToDoList from './components/ToDoList/index.vue'
 </script>
 
 <template>
@@ -21,6 +22,7 @@ import QuickEntry from './components/QuickEntry/index.vue';
                 <user-info-board />
                 <side-carousel />
                 <quick-entry />
+                <to-do-list />
             </el-space>
         </el-aside>
     </el-container>

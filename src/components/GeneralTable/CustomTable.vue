@@ -53,7 +53,7 @@ defineExpose({ scrollToTop })
                 label="#" 
                 prop="index" 
                 v-if="props.indexWidth"
-                align="center"
+                :align="'center'"
                 :minWidth="props.indexWidth"
             >
                 <template #default="scope">
