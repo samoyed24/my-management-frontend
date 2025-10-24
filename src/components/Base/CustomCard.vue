@@ -4,6 +4,7 @@ export interface CustomCardProps {
         icon?: string
         text?: string
     }
+    noPadding?: boolean
 }
 
 const props = defineProps<CustomCardProps>() 
@@ -11,7 +12,7 @@ const slots = useSlots()
 </script>
 
 <template>
-<el-card>
+<el-card :body-style="{ padding: noPadding ? 0 : undefined }">
     <template #header v-if="slots.header || header">
         <slot name="header">
             <el-icon :size="14" :style="{ paddingRight: '4px' }" v-if="header?.icon">
@@ -36,4 +37,5 @@ const slots = useSlots()
 </template>
 
 <style scoped>
+
 </style>

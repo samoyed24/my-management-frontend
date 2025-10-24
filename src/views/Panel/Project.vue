@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import ButtonArea, { ButtonAreaRecord } from '@/components/GeneralTable/ButtonArea.vue';
 import FilterArea, { FilterItem } from '@/components/GeneralTable/FilterArea.vue';
-import CustomTable, { PaginationProps, TableProp } from '@/components/GeneralTable/CustomTable.vue';
+import CustomTable, { PaginationProps, TableColumnProps } from '@/components/GeneralTable/CustomTable.vue';
 import { Delete, EditPen, View } from '@element-plus/icons-vue';
 import { getProjectData } from '@/api/project';
 import { ProjectAddFormModel, ProjectFilterParams, ProjectStatus, ProjectTableData } from 'types/project';
@@ -254,38 +254,44 @@ const buttonRecords: ButtonAreaRecord[] = [
 
 const tableData: ProjectTableData[] = reactive<ProjectTableData[]>([])
 
-const tableProps: TableProp[] = [
+const tableColumnProps: TableColumnProps[] = [
     {
         label: '项目名称',
         prop: 'name',
         minWidth: '12.5%',
+        align: 'center',
     },
     {
         label: '客户名称',
         prop: 'client',
         minWidth: '12.5%',
+        align: 'center',
     },
     {
         label: '合同额(元)',
         prop: 'amount',
         minWidth: '10%',
-        sortable: 'custom'
+        sortable: 'custom',
+        align: 'center',
     },
     {
         label: '开始日期',
         prop: 'startDate',
         minWidth: '15%',
-        sortable: 'custom'
+        sortable: 'custom',
+        align: 'center',
     },
     {
         label: '状态',
         prop: 'status',
-        minWidth: '10%'
+        minWidth: '10%',
+        align: 'center',
     },
     {
         label: '操作',
         prop: 'operation',
-        minWidth: '25%'
+        minWidth: '25%',
+        align: 'center',
     },
 ]
 
@@ -355,8 +361,8 @@ fetchData()
         <custom-table 
             ref="customTableRef"
             :table-data="tableData" 
-            :table-props="tableProps" 
-            :show-index="true" 
+            :table-column-props="tableColumnProps" 
+            :index-width="'5%'"
             @sort-change="handleSortChange"
             class="custom-table"
             :height="425"

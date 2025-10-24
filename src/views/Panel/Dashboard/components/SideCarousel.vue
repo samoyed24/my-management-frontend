@@ -12,7 +12,7 @@ const carouselList: string[] = [
 </script>
 
 <template>
-    <custom-card>
+    <custom-card  :no-padding="true">
         <template #default>
             <custom-carousel 
                 :image-list="carouselList" 

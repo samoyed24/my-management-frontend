@@ -1,19 +1,21 @@
 <script setup lang="ts">
 
-export interface TableProp {
+export interface TableColumnProps {
     label?: string
     prop: string
     width?: number | string
     sortable?: boolean | string
     minWidth?: string
+    align?: AlignSetting
 }
 export interface TableData {}
 export interface CustomTableProps {
-    tableProps: TableProp[]
+    tableColumnProps: TableColumnProps[]
     tableData: TableData[]
-    showIndex: boolean
+    indexWidth?: string
     height?: number
     loading: boolean
+    cellCenter?: boolean
     paginationProps: PaginationProps
 }
 export type OrderType = 'descending' | 'ascending'
@@ -41,8 +43,7 @@ defineExpose({ scrollToTop })
             ref="tableRef"
             :data="tableData" 
             @sort-change="handleSortChange"
-            :header-cell-style="{color: '#333333', textAlign: 'center'}"
-            :cell-style="{color: '#333333', textAlign: 'center'}"
+            :header-cell-style="{ textAlign: 'center' }"
             :height="height"
             :show-overflow-tooltip="true"
             v-loading="loading"
@@ -51,21 +52,23 @@ defineExpose({ scrollToTop })
             <el-table-column 
                 label="#" 
                 prop="index" 
-                v-if="props.showIndex"
-                minWidth="5%"
+                v-if="props.indexWidth"
+                align="center"
+                :minWidth="props.indexWidth"
             >
                 <template #default="scope">
                     {{ (paginationProps.currentPage - 1) * paginationProps.pageSize + scope.$index + 1  }}
                 </template>
             </el-table-column>
             <el-table-column
-                v-for="(item, index) in tableProps"
+                v-for="(item, index) in tableColumnProps"
                 :key="index"
                 :label="item.label"
                 :prop="item.prop"
                 :width="item.width"
                 :min-width="item.minWidth"
                 :sortable="item.sortable"
+                :align="item.align"
             >
                 <template #default="scope">
                 <component

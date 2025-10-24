@@ -193,12 +193,15 @@ const option: EChartsOption = {
           return (value as number) + '%';
         }
       },
+      lineStyle: {
+        type: 'dashed',
+        width: 3,
+      },
       itemStyle: {
         color: new echarts.graphic.LinearGradient(
           0, 0, 0, 1,
           [
             { offset: 0, color: '#F91167' },
-            { offset: 0.5, color: '#FB03C1' },
             { offset: 1, color: '#8811F9' }
           ]
         )
