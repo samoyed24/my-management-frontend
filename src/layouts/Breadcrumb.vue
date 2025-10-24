@@ -5,10 +5,10 @@ const route = useRoute()
 
 <template>
     <el-text size="large" tag="b">
-        {{ route.meta.title }}
+        {{ route.meta?.title }}
     </el-text>
     <el-breadcrumb separator="/" class="custom-breadcrumb">
-        <el-breadcrumb-item v-for="{ path, name } in route.matched" :key="path">{{ name }}</el-breadcrumb-item>
+        <el-breadcrumb-item v-for="{ path, meta } in route.matched" :key="path">{{ meta.title }}</el-breadcrumb-item>
     </el-breadcrumb>
 </template>
 

@@ -4,6 +4,7 @@ import StatisticChart from './components/StatisticChart/index.vue'
 import UserInfoBoard from './components/UserInfoBoard.vue';
 import SideCarousel from './components/SideCarousel.vue';
 import AnnouncementBoard from './components/AnnouncementBoard.vue';
+import QuickEntry from './components/QuickEntry/index.vue';
 </script>
 
 <template>
@@ -19,6 +20,7 @@ import AnnouncementBoard from './components/AnnouncementBoard.vue';
             <el-space direction="vertical" :fill="true" size="large">
                 <user-info-board />
                 <side-carousel />
+                <quick-entry />
             </el-space>
         </el-aside>
     </el-container>

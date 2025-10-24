@@ -17,7 +17,7 @@ const props = defineProps<SideBarItemProps>()
             <el-icon>
                 <component :is="route.meta.icon"></component>
             </el-icon>
-            {{ route.name }}
+            {{ route.meta?.title }}
         </template>
         <side-bar-item v-for="children in route.children" :route="children" :parent-path="parentPath + '/' + route.path" />
     </el-sub-menu>
@@ -25,6 +25,6 @@ const props = defineProps<SideBarItemProps>()
         <el-icon>
             <component :is="route.meta.icon"></component>
         </el-icon>
-        {{ route.name }}
+        {{ route.meta?.title }}
     </el-menu-item>
 </template>

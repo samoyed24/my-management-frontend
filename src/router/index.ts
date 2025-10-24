@@ -4,147 +4,150 @@ import { useUserAuthStore } from '@/stores/auth'
 const routes: RouteRecordRaw[] = [
   {
     path: '/panel',
-    name: '面板',
+    name: 'panel',
+    meta: {
+      title: '面板',
+    },
     redirect: '/panel/dashboard',
     component: () => import('@/layouts/index.vue'),
     children: [
       {
         path: 'dashboard',
-        name: '仪表盘',
+        name: 'dashboard',
         component: () => import('@/views/Panel/Dashboard/index.vue'),
         meta: {
           title: '仪表盘',
-          icon: 'Odometer'
-        }
+          icon: 'Odometer',
+        },
       },
       {
         path: 'project',
-        name: '项目管理',
+        name: 'project',
         component: () => import('@/views/Panel/Project.vue'),
         meta: {
           title: '项目管理',
-          icon: 'Promotion'
-        }
+          icon: 'Promotion',
+        },
       },
       {
         path: 'statistics',
-        name: '数据统计',
+        name: 'statistics',
         meta: {
           title: '数据统计',
-          icon: 'DataAnalysis'
+          icon: 'DataAnalysis',
         },
         children: [
           {
             path: 'visible',
-            name: '数据可视化',
+            name: 'visible',
             component: () => import('@/views/Panel/Project.vue'),
             meta: {
               title: '数据可视化',
-              icon: 'DataLine'
+              icon: 'DataLine',
             }
           },
           {
             path: 'annual',
-            name: '年度数据统计',
+            name: 'annual',
             component: () => import('@/views/Panel/Menu.vue'),
             meta: {
               title: '年度数据统计',
-              icon: 'Calendar'
+              icon: 'Calendar',
             }
           },
           {
             path: 'special',
-            name: '专项统计',
+            name: 'special',
             meta: {
               title: '专项统计',
-              icon: 'List'
+              icon: 'List',
             },
             children: [
               {
                 path: 'financial',
-                name: '销售数据',
+                name: 'financial',
                 component: () => import('@/views/Panel/Menu.vue'),
                 meta: {
                   title: '财务数据统计',
-                  icon: 'Money'
-                }
+                  icon: 'Money',
+                },
               },
               {
                 path: 'humanpower',
-                name: '人力成本',
+                name: 'humanpower',
                 component: () => import('@/views/Panel/Menu.vue'),
                 meta: {
                   title: '人力成本统计',
-                  icon: 'UserFilled'
-                }
+                  icon: 'UserFilled',
+                },
               },
             ]
           },
-        ]
+        ],
       },
       {
         path: 'dataEntry',
-        name: '数据录入',
+        name: 'dataEntry',
         component: () => import('@/views/Panel/Menu.vue'),
         meta: {
           title: '数据录入',
-          icon: 'EditPen'
+          icon: 'EditPen',
         },
         children: [ 
           {
             path: 'member',
-            name: '员工数据',
+            name: 'member',
             component: () => import('@/views/Panel/Menu.vue'),
             meta: {
               title: '员工数据录入',
-              icon: 'UserFilled'
+              icon: 'UserFilled',
             },
           },
           {
-            path: 'financial',
-            name: '发票数据',
+            path: 'ticket',
+            name: 'ticket',
             component: () => import('@/views/Panel/Menu.vue'),
             meta: {
               title: '发票数据录入',
-              icon: 'Ticket'
+              icon: 'Ticket',
             },
           },
           {
             path: 'contract',
-            name: '合同数据',
+            name: 'contract',
             component: () => import('@/views/Panel/Menu.vue'),
             meta: {
               title: '合同数据录入',
-              icon: 'Document'
+              icon: 'Document',
             },
           }
         ]
       },
       {
         path: 'backup',
-        name: '数据备份',
+        name: 'backup',
         component: () => import('@/views/Panel/Menu.vue'),
         meta: {
           title: '数据备份',
-          icon: 'CopyDocument'
+          icon: 'CopyDocument',
         },
         children: [ 
           {
             path: 'import',
-            name: '导入',
+            name: 'import',
             component: () => import('@/views/Panel/Menu.vue'),
             meta: {
               title: '数据导入',
-              icon: 'Download'
+              icon: 'Download',
             },
           },
           {
             path: 'export',
-            name: '导出',
+            name: 'export',
             component: () => import('@/views/Panel/Menu.vue'),
             meta: {
               title: '数据导出',
-              icon: 'Upload'
+              icon: 'Upload',
             },
           },
         ]
@@ -153,7 +156,10 @@ const routes: RouteRecordRaw[] = [
   },
   {
     path: '/auth',
-    name: '鉴权',
+    name: 'auth',
+    meta: {
+      title: '鉴权',
+    },
     component: () => import('@/views/Auth/index.vue'),
   },
   {
